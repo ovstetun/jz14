@@ -1,0 +1,23 @@
+{
+  "id": "envController",
+  "kind": "ReplicationController",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "replicas": 4,
+    "replicaSelector": {"name": "env"},
+    "podTemplate": {
+      "desiredState": {
+         "manifest": {
+           "version": "v1beta1",
+           "id": "envController",
+           "containers": [{
+             "name": "env",
+             "image": "ovstetun/env",
+             "ports": [{"containerPort": 8081, "hostPort": 8081}]
+           }]
+         }
+       },
+       "labels": {"name": "env"}
+      }},
+  "labels": {"name": "env"}
+}
