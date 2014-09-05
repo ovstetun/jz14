@@ -21,7 +21,7 @@ object Environment {
     Properties.envOrElse(prop, default)
   }
   def host(prop: String, default: String) = {
-    if (isKubernetes) "localhost"
+    if (isKubernetes) Properties.envOrElse("SERVICE_HOST", "localhost")
     else Properties.envOrElse(prop, default)
   }
   def servicePort(serviceName: String, default: Int) = {
