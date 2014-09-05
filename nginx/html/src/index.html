@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html ng-app="ngBoilerplate" ng-controller="AppCtrl">
+  <head>
+    <title ng-bind="pageTitle"></title>
+
+    <!-- social media tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@joshdmiller">
+    <meta name="twitter:title" content="ngBoilerplate">
+    <meta name="twitter:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
+    <meta name="twitter:creator" content="@joshdmiller">
+    <meta name="twitter:image:src" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846">
+    <meta property="og:title" content="ngBoilerplate" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://bit.ly/ngBoilerplate" />
+    <meta property="og:image" content="https://a248.e.akamai.net/assets.github.com/images/modules/logos_page/Octocat.png?1366128846" />
+    <meta property="og:description" content="Non-Trivial AngularJS Made Easy: Everything you need to kickstart AngularJS projects: a best-practice directory structure, an intelligent build system, and the best web design libraries around.">
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+    <!-- it's stupid to have to load it here, but this is for the +1 button -->
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+      { "parsetags": "explicit" }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+          <div class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand"
+                  ui-sref="home">FiveTwo</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li ui-route="/home" ui-sref-active="active">
+                  <a ui-sref="home">
+                    <i class="fa fa-home"></i>
+                    Home
+                  </a>
+                </li>
+                <li ui-route="/ingredients" ui-sref-active="active">
+                  <a ui-sref="ingredients">
+                    <i class="fa fa-gears"></i>
+                    Ingredients
+                  </a>
+                </li>
+                <li ui-route="/about" ui-sref-active="active">
+                  <a ui-sref="about">
+                    <i class="fa fa-info-circle"></i>
+                    What is it?
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="https://github.com/joshdmiller/ng-boilerplate#readme">
+                    <i class="fa fa-book"></i>
+                    Read the Docs
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/joshdmiller/ng-boilerplate">
+                    <i class="fa fa-github-alt"></i>
+                    Github
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/joshdmiller/ng-boilerplate/issues">
+                    <i class="fa fa-comments"></i>
+                    Support
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="container" ui-view="main"></div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <ul class="social">
+            <li><a target="_blank" href="http://gplus.to/joshdmiller"><i class="icon-google-plus-sign"></i></a></li>
+            <li><a target="_blank" href="http://twitter.com/joshdmiller"><i class="icon-twitter-sign"></i></a></li>
+            <li><a target="_blank" href="http://linkedin.com/in/joshdmiller"><i class="icon-linkedin-sign"></i></a></li>
+            <li><a target="_blank" href="http://github.com/joshdmiller/ng-boilerplate"><i class="icon-github-sign"></i></a></li>
+          </ul>
+          
+
+          <p>
+            (c) 2013 Josh David Miller. 
+            <a href="http://github.com/joshdmiller/ng-boilerplate/fork_select">Fork this</a>
+            to kickstart your next project.
+            <br />
+            ng-boilerplate is based on
+            <a href="http://www.angularjs.org">AngularJS</a>,
+            <a href="http://getbootstrap.com">Bootstrap</a>, 
+            <a href="http://angular-ui.github.com/bootstrap">UI Bootstrap</a>,
+            and 
+            <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.        
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

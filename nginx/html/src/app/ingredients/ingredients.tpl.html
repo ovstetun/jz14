@@ -1,0 +1,24 @@
+<div>
+  <h1>Ingredients!</h1>
+  <p>There are a total of {{ingredients.length}} ingredients registered</p>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Calories</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="ingredient in ingredients">
+        <td>{{ingredient.id}}</td>
+        <td>{{ingredient.name}}</td>
+        <td>{{ingredient.calories}}</td>
+        <td><a class="btn btn-default"><i class="fa fa-edit"></i> Edit</a></td>
+
+      </tr>      
+    </tbody>
+  </table>
+</div>
