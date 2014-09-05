@@ -1,0 +1,10 @@
+{
+  "id": "ingredients",
+  "kind": "Service",
+  "apiVersion": "v1beta1",
+  "port": 10100,
+  "containerPort": 8080,
+  "selector": {
+    "name": "ingredients"
+  }
+}

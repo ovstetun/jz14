@@ -1,0 +1,26 @@
+{
+  "id": "mysql",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+      "id": "mysql",
+      "containers": [{
+        "name": "mysql",
+        "image": "mysql",
+        "ports": [
+          {
+            "containerPort": 3306,
+            "hostPort": 3306
+          }],
+        "env": [
+          {"name": "MYSQL_ROOT_PASSWORD", "value": "<PASSWORD>"}
+        ]
+      }]
+    }
+  },
+  "labels": {
+    "name": "mysql"
+  }
+}

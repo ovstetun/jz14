@@ -1,0 +1,23 @@
+{
+  "id": "nginxController",
+  "kind": "ReplicationController",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "replicas": 1,
+    "replicaSelector": {"name": "nginx"},
+    "podTemplate": {
+      "desiredState": {
+         "manifest": {
+           "version": "v1beta1",
+           "id": "nginxController",
+           "containers": [{
+             "name": "nginx",
+             "image": "ovstetun/fivetwonginx",
+             "ports": [{"containerPort": 3000, "hostPort": 80}]
+           }]
+         }
+       },
+       "labels": {"name": "nginx"}
+      }},
+  "labels": {"name": "nginx"}
+}

@@ -1,0 +1,24 @@
+{
+  "id": "ingredientsController",
+  "kind": "ReplicationController",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "replicas": 1,
+    "replicaSelector": {"name": "ingredients"},
+    "podTemplate": {
+      "desiredState": {
+         "manifest": {
+           "version": "v1beta1",
+           "id": "ingredientsController",
+           "containers": [{
+             "name": "ingredients",
+             "image": "ovstetun/ingredients",
+             "ports": [{"containerPort": 8080, "hostPort": 8080}],
+             "env": [{"name": "MYSQL_INGREDIENTS_PW", "value": "<PASSWORD>"}]
+           }]
+         }
+       },
+       "labels": {"name": "ingredients"}
+      }},
+  "labels": {"name": "ingredients"}
+}

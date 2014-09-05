@@ -1,0 +1,27 @@
+{
+  "id": "elastic",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+      "id": "elastic",
+      "containers": [{
+        "name": "elastic",
+        "image": "dockerfile/elasticsearch",
+        "ports": [
+          {
+            "containerPort": 9200,
+            "hostPort": 9200
+          },
+          {
+            "containerPort": 9300,
+            "hostPort": 9300
+          }]
+      }]
+    }
+  },
+  "labels": {
+    "name": "elastic"
+  }
+}

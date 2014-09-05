@@ -1,0 +1,10 @@
+{
+  "id": "elastic",
+  "kind": "Service",
+  "apiVersion": "v1beta1",
+  "port": 10300,
+  "containerPort": 9300,
+  "selector": {
+    "name": "elastic"
+  }
+}
