@@ -17,7 +17,7 @@ http {
         proxy_http_version 1.1;
 
         location / {
-            root   /Users/ovstetun/dev/docker/jz14/nginx/html/build;
+            root   <PWD>/html/build;
             index  index.html index.htm;
         }
 

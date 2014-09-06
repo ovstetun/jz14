@@ -15,6 +15,7 @@ Anyways, to install the basic components:
   Then use `boot2docker ip` to get the IP of your boot2docker host, and add this to your hosts-file as `localdocker`. This hostname is used throughout the linking process later, and must be set correctly for the other components to work.
 
 * [Fig](http://www.fig.sh/)
+  Fig is used to run prebuilt Docker containers as dependencies for each submodule. This is the magic for making everyday development *so* much easier. Whenever a command `fig up` is issued, configured containers will start up and be available on the `localdocker` host for use by the module you are actively working with. That simple.
 
   ```brew install python``` (unsure if the python installation in OS X is OK, might try without this one)
 
