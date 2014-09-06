@@ -1,5 +1,6 @@
 angular.module( 'ngBoilerplate.ingredients', [
   'ui.router',
+  'ui.router.state',
   'ngResource'
 ])
 
@@ -43,8 +44,9 @@ angular.module( 'ngBoilerplate.ingredients', [
 
 .factory('Ingredients', ['$resource',
   function($resource){
-    return $resource('api/ingredients/:id', {}, {
-      query: {method:'GET', params:{id:''}, isArray:true}
+    return $resource('/api/ingredients/:id', {id: '@id'}, {
+      query: {method:'GET', params:{id:''}, isArray:true},
+      create: {method:'POST', params:{id:''}}
     });
   }])
 
@@ -55,8 +57,13 @@ angular.module( 'ngBoilerplate.ingredients', [
   $scope.ingredients = Ingredients.query();
 }])
 
-.controller( 'NewIngredientCtrl', ['$scope', function NewIngredientCtrl($scope) {
+.controller( 'NewIngredientCtrl', ['$scope', '$state', 'Ingredients', function NewIngredientCtrl($scope, $state, Ingredients) {
   $scope.ingredient = {"name": "", "calories": 0};
+  $scope.save = function() {
+    Ingredients.create($scope.ingredient).$promise.then(function () {
+      $state.go('ingredients', {}, {reload: true});
+    });
+  };
 }])
 
 .controller( 'EditIngredientCtrl', ['$scope', '$stateParams', 'Ingredients', function EditIngredientCtrl( $scope, $stateParams, Ingredients ) {
