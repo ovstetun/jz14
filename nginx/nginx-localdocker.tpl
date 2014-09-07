@@ -23,16 +23,24 @@ http {
 
         location /api/ingredients {
             proxy_pass http://localdocker:8080/;
+            add_header 'Access-Control-Allow-Origin' "$http_origin";
+            add_header 'Access-Control-Allow-Credentials' 'true';
         }
         location /api/ingredients/ {
             proxy_pass http://localdocker:8080/;
+            add_header 'Access-Control-Allow-Origin' "$http_origin";
+            add_header 'Access-Control-Allow-Credentials' 'true';
         }
 
         location /search {
             proxy_pass http://localdocker:9200/;
+            add_header 'Access-Control-Allow-Origin' "$http_origin";
+            add_header 'Access-Control-Allow-Credentials' 'true';
         }
         location /search/ {
             proxy_pass http://localdocker:9200/;
+            add_header 'Access-Control-Allow-Origin' "$http_origin";
+            add_header 'Access-Control-Allow-Credentials' 'true';
         }
 
     }
