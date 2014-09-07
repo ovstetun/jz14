@@ -23,7 +23,7 @@ module.exports = {
   app_files: {
     js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/assets/**/*.js' ],
     jsunit: [ 'src/**/*.spec.js' ],
-    
+
     coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee' ],
     coffeeunit: [ 'src/**/*.spec.coffee' ],
 
@@ -68,7 +68,8 @@ module.exports = {
       'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-ui-utils/modules/route/route.js',
-      'bower_components/angular-resource/angular-resource.js'
+      'bower_components/angular-resource/angular-resource.js',
+      'bower_components/elasticsearch/elasticsearch.angular.js'
     ],
     css: [
     ],

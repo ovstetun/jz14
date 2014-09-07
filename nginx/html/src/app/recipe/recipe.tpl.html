@@ -1,0 +1,37 @@
+<div>
+  <h1>Recipes!</h1>
+  <p>
+    <input type="search" ng-model="model.searchInput"/>
+    <button ng-click="search()">Search</button>
+  </p>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Calories</th>
+        <th>Amount</th>
+        <th>Calculated calories</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="ingredient in model.ingredients">
+        <td>{{ingredient.id}}</td>
+        <td>{{ingredient.name}}</td>
+        <td>{{ingredient.calories}}</td>
+        <td><input type="number" ng-model="ingredient.amount"/></td>
+        <td>{{ingredient.calories * ingredient.amount}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Sum</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{totalCalories()}}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
