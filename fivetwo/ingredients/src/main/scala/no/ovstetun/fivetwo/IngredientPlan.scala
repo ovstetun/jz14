@@ -33,8 +33,6 @@ abstract class IngredientPlan(val ingredientModule: IngredientSlickModule) exten
           } |
           jsonInput(PUT) { ingredient: Ingredient =>
             val u = ingredientModule.ingredients.byId(id)
-            println("flaff" + u.updateStatement)
-            println(u.updateStatement)
 
             u update ingredient.copy(id = Some(id))
 
