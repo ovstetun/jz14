@@ -3,8 +3,10 @@ angular.module( 'ngBoilerplate', [
   'templates-common',
   'ngBoilerplate.home',
   'ngBoilerplate.ingredients',
+  'ngBoilerplate.recipe',
   'ngBoilerplate.about',
-  'ui.router'
+  'ui.router',
+  'elasticsearch'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
