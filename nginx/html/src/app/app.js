@@ -1,10 +1,9 @@
-angular.module( 'ngBoilerplate', [
+angular.module( 'DietPlanner', [
   'templates-app',
   'templates-common',
-  'ngBoilerplate.home',
-  'ngBoilerplate.ingredients',
-  'ngBoilerplate.recipe',
-  'ngBoilerplate.about',
+  'DietPlanner.home',
+  'DietPlanner.ingredients',
+  'DietPlanner.recipe',
   'ui.router',
   'elasticsearch'
 ])
@@ -19,7 +18,7 @@ angular.module( 'ngBoilerplate', [
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     if ( angular.isDefined( toState.data.pageTitle ) ) {
-      $scope.pageTitle = toState.data.pageTitle + ' | ngBoilerplate' ;
+      $scope.pageTitle = toState.data.pageTitle;
     }
   });
 })

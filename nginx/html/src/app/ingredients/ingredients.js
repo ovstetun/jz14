@@ -1,4 +1,6 @@
-angular.module( 'ngBoilerplate.ingredients', [
+(function(){
+
+angular.module( 'DietPlanner.ingredients', [
   'ui.router',
   'ui.router.state',
   'ngResource'
@@ -20,6 +22,7 @@ angular.module( 'ngBoilerplate.ingredients', [
     },
     data:{ pageTitle: 'Ingredients' }
   });
+
   $stateProvider.state( 'ingredients/new', {
     url: '/ingredients/new',
     views: {
@@ -30,6 +33,7 @@ angular.module( 'ngBoilerplate.ingredients', [
     },
     data:{ pageTitle: 'New Ingredient' }
   });
+
   $stateProvider.state( 'ingredients/edit', {
     url: '/ingredients/:id',
     views: {
@@ -38,15 +42,16 @@ angular.module( 'ngBoilerplate.ingredients', [
         templateUrl: 'ingredients/edit.tpl.html'
       }
     },
-    data:{ pageTitle: 'Edit ingredient' }
+    data:{ pageTitle: 'Edit Ingredient' }
   });
 })
 
 .factory('Ingredients', ['$resource',
   function($resource){
-    return $resource('/api/ingredients/:id', {id: '@id'}, {
+    return $resource('/api/ingredients/:id', {}, {
       query: {method:'GET', params:{id:''}, isArray:true},
-      create: {method:'POST', params:{id:''}}
+      create: {method:'POST', params:{id:''}},
+      update: {method:'PUT', params:{id:'@id'}}
     });
   }])
 
@@ -55,21 +60,34 @@ angular.module( 'ngBoilerplate.ingredients', [
  */
 .controller( 'IngredientsCtrl', ['$scope', 'Ingredients', function IngredientsController( $scope, Ingredients ) {
   $scope.ingredients = Ingredients.query();
+
+  $scope.remove = function(ingredient) {
+    var toRemove = Ingredients.get({id:ingredient.id}, function() {
+      toRemove.$remove();
+    });
+  };
 }])
 
 .controller( 'NewIngredientCtrl', ['$scope', '$state', 'Ingredients', function NewIngredientCtrl($scope, $state, Ingredients) {
   $scope.ingredient = {"name": "", "calories": 0};
+
   $scope.save = function() {
     Ingredients.create($scope.ingredient).$promise.then(function () {
       $state.go('ingredients', {}, {reload: true});
     });
   };
+
 }])
 
-.controller( 'EditIngredientCtrl', ['$scope', '$stateParams', 'Ingredients', function EditIngredientCtrl( $scope, $stateParams, Ingredients ) {
-  Ingredients.get({id: $stateParams.id}, function(ingredient){
-    $scope.ingredient = ingredient;
-  });
-}])
+.controller( 'EditIngredientCtrl', ['$scope', '$state', '$stateParams', 'Ingredients', function EditIngredientCtrl( $scope, $state, $stateParams, Ingredients ) {
+  $scope.ingredient = Ingredients.get({id: $stateParams.id});
 
-;
+  $scope.update = function() {
+    Ingredients.update($scope.ingredient).$promise.then(function () {
+        $state.go('ingredients', {}, {reload: true});
+    });
+  };
+
+}]);
+
+})();

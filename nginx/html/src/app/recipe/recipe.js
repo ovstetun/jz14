@@ -1,4 +1,4 @@
-angular.module( 'ngBoilerplate.recipe', [
+angular.module( 'DietPlanner.recipe', [
   'ui.router',
   'ui.router.state',
   'ngResource',
