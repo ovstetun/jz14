@@ -17,9 +17,9 @@
         <td>{{ingredient.id}}</td>
         <td>{{ingredient.name}}</td>
         <td>{{ingredient.calories}}</td>
-        <td><a class="btn btn-default"><i class="fa fa-edit"></i> Edit</a></td>
-
-      </tr>      
+        <td><a class="btn btn-default" href="#/ingredients/{{ingredient.id}}"><i class="fa fa-edit"></i></a>
+          <a class="btn btn-default" ng-click="remove(ingredient)" href=""><i class="fa fa-remove"></i></a></td>
+      </tr>
     </tbody>
   </table>
 </div>
