@@ -1,8 +1,10 @@
 <div>
   <h1>Recipes!</h1>
   <p>
-    <input type="search" ng-model="model.searchInput"/>
-    <button ng-click="search()">Search</button>
+    <form ng-submit="search()" class="form-inline">
+      <input type="search" class="form-control" ng-model="model.searchInput"/>
+      <submit class="btn btn-default">Search</submit>
+    </form>
   </p>
 
   <table class="table table-striped">
@@ -11,8 +13,8 @@
         <th>#</th>
         <th>Name</th>
         <th>Calories</th>
-        <th>Amount</th>
-        <th>Calculated calories</th>
+        <!--<th>Amount</th>-->
+        <!--<th>Calculated calories</th>-->
       </tr>
     </thead>
     <tbody>
@@ -20,11 +22,11 @@
         <td>{{ingredient.id}}</td>
         <td>{{ingredient.name}}</td>
         <td>{{ingredient.calories}}</td>
-        <td><input type="number" ng-model="ingredient.amount"/></td>
-        <td>{{ingredient.calories * ingredient.amount}}</td>
+        <!--<td><input type="number" ng-model="ingredient.amount"/></td>-->
+        <!--<td>{{ingredient.calories * ingredient.amount}}</td>-->
       </tr>
     </tbody>
-    <tfoot>
+    <!--<tfoot>
       <tr>
         <td>Sum</td>
         <td></td>
@@ -32,6 +34,6 @@
         <td></td>
         <td>{{totalCalories()}}</td>
       </tr>
-    </tfoot>
+    </tfoot>-->
   </table>
 </div>

@@ -29,12 +29,15 @@ angular.module( 'DietPlanner.recipe', [
 
   service.search = function(queryString, callback) {
     var service = esFactory({
-      host: 'http://fivetwo.ovstetun.no/search',
+      host: window.location.protocol + '//' + window.location.host + '/search',
       sniffOnStart: true,
       sniffInterval: 300000
     });
 
-    service.search({q: queryString}).then(callback);
+    var query = {
+        "q": queryString
+    };
+    service.search(query).then(callback);
   };
 
   return service;
@@ -51,6 +54,7 @@ angular.module( 'DietPlanner.recipe', [
   };
 
   $scope.search = function() {
+    $scope.model.ingredients = [];
     esService.search($scope.model.searchInput, function(response) {
       angular.forEach(response.hits.hits, function(ingredient) {
         var source = ingredient._source;
