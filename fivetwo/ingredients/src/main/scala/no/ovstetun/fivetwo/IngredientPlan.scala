@@ -36,6 +36,8 @@ abstract class IngredientPlan(val ingredientModule: IngredientSlickModule) exten
 
             u update ingredient.copy(id = Some(id))
 
+            ElasticIntegration.save(ingredient)
+            
             Right(ingredient copy (id = Some(id)))
           }
       }
