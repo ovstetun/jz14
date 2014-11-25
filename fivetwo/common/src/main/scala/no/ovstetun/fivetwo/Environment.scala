@@ -11,7 +11,7 @@ object Environment {
   case class Service(host: String, port: Int)
 
   def service(name: String, defaultPort: Int) = {
-    val h = host(name + "_PORT_" + defaultPort + "_TCP_ADDR", "localdocker")
+    val h = host(name, defaultPort, "localdocker")
     val p = servicePort(name, defaultPort)
 
     Service(h, p)
@@ -20,19 +20,15 @@ object Environment {
   def prop(prop: String, default: String) = {
     Properties.envOrElse(prop, default)
   }
-  def host(prop: String, default: String) = {
-    if (isKubernetes) Properties.envOrElse("SERVICE_HOST", "localhost")
-    else Properties.envOrElse(prop, default)
+
+  def host(name: String, defaultPort: Int, default: String) = {
+    val prop = name + "_PORT_" + defaultPort + "_TCP_ADDR"
+    Properties.envOrElse(prop, default)
   }
+
   def servicePort(serviceName: String, default: Int) = {
-    val realServiceProp =
-      if (isKubernetes) serviceName+"_SERVICE_PORT"
-      else serviceName + "_PORT_" + default + "_PORT"
+    val realServiceProp = serviceName + "_PORT_" + default + "_TCP_PORT"
 
     Properties.envOrElse(realServiceProp, default.toString).toInt
-  }
-
-  private def isKubernetes = {
-    Properties.envOrNone("SERVICE_HOST").exists(_ => true)
   }
 }

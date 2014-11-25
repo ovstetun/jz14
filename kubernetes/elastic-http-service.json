@@ -2,7 +2,7 @@
   "id": "elastichttp",
   "kind": "Service",
   "apiVersion": "v1beta1",
-  "port": 10200,
+  "port": 9200,
   "containerPort": 9200,
   "selector": {
     "name": "elastic"
