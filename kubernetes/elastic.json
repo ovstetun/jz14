@@ -17,8 +17,22 @@
           {
             "containerPort": 9300,
             "hostPort": 9300
-          }]
-      }]
+          }],
+          "volumeMounts": [
+            {
+              "name": "es-persistent-storage",
+              "mountPath": "/data"
+            }
+          ]
+      }],
+      "volumes": [
+        {
+          "name":"es-persistent-storage",
+          "source": {
+            "emptyDir": {}
+          }
+        }
+      ]
     }
   },
   "labels": {
