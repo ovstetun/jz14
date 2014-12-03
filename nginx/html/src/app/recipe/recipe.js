@@ -35,7 +35,8 @@ angular.module( 'DietPlanner.recipe', [
     });
 
     var query = {
-        "q": queryString
+        "q": queryString,
+        "index": "ingredients"
     };
     service.search(query).then(callback);
   };
@@ -54,19 +55,23 @@ angular.module( 'DietPlanner.recipe', [
   };
 
   $scope.search = function() {
-    $scope.model.ingredients = [];
+    $scope.model.hits = [];
     esService.search($scope.model.searchInput, function(response) {
       angular.forEach(response.hits.hits, function(ingredient) {
         var source = ingredient._source;
-        angular.extend(source, {amount: 0});
-        $scope.model.ingredients.push(source);
+        angular.extend(source, {amount: 0, cals: function() {return (this.amount * this.calories / 100);}});
+        $scope.model.hits.push(source);
       });
     });
+  };
+  $scope.add = function(ingredient) {
+    console.log(ingredient);
+    $scope.model.ingredients.push(ingredient);
   };
 
   $scope.totalCalories = function() {
     return $scope.model.ingredients.reduce(function(sum, ingredient) {
-      return sum += ingredient.calories * ingredient.amount;
+      return sum += ingredient.cals();
     }, 0);
   };
 }])

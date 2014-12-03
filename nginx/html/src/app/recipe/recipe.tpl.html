@@ -1,9 +1,35 @@
 <div>
-  <h1>Recipes!</h1>
+  <h1>Recipe calculator</h1>
+
+  <p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Calories</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="ingredient in model.ingredients"> 
+          <td>{{ingredient.name}}</td>
+          <td><input type="number" class="form-control" ng-model="ingredient.amount"/></td>
+          <td>{{ingredient.cals()}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Sum</td>
+          <td>{{totalCalories()}}</td>
+        </tr>
+      </tfoot>
+    </table>
+  </p>
+
   <p>
     <form ng-submit="search()" class="form-inline">
       <input type="search" class="form-control" ng-model="model.searchInput"/>
-      <submit class="btn btn-default">Search</submit>
+      <input type="submit" class="btn btn-default" value="Search"/>
     </form>
   </p>
 
@@ -12,18 +38,17 @@
       <tr>
         <th>#</th>
         <th>Name</th>
-        <th>Calories</th>
+        <th colspan="2">Calories</th>
         <!--<th>Amount</th>-->
         <!--<th>Calculated calories</th>-->
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="ingredient in model.ingredients">
+      <tr ng-repeat="ingredient in model.hits">
         <td>{{ingredient.id}}</td>
         <td>{{ingredient.name}}</td>
         <td>{{ingredient.calories}}</td>
-        <!--<td><input type="number" ng-model="ingredient.amount"/></td>-->
-        <!--<td>{{ingredient.calories * ingredient.amount}}</td>-->
+        <td><a ng-click="add(ingredient)" class="btn btn-default">Add</a></td>
       </tr>
     </tbody>
     <!--<tfoot>
