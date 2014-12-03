@@ -1,8 +1,8 @@
-scalaVersion := "2.11.2"
+scalaVersion in ThisBuild := "2.11.2"
 
-organization := "no.ovstetun.fivetwo"
+organization in ThisBuild := "no.ovstetun.fivetwo"
 
-version := "1.0-SNAPSHOT"
+version in ThisBuild := "1.0-SNAPSHOT"
 
 lazy val common = project
 
