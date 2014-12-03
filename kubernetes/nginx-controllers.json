@@ -12,7 +12,7 @@
            "id": "nginxController",
            "containers": [{
              "name": "nginx",
-             "image": "ovstetun/fivetwonginx",
+             "image": "ovstetun/fivetwonginx:latest",
              "ports": [{"containerPort": 3000}]
            }]
          }
