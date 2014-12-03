@@ -6,7 +6,7 @@ mysql:
     - "3306:3306"
 
 ingredients:
-  image: ovstetun/ingredients
+  image: ovstetun/ingredients:11
   links:
     - "mysql:mysql"
     - "elastic:elastic"
