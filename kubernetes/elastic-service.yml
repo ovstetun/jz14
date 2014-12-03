@@ -1,0 +1,7 @@
+apiVersion: v1beta1
+kind: Service
+id: elasticsearch
+containerPort: 9200
+port: 9200
+selector:
+  name: elastic
