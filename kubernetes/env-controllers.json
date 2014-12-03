@@ -3,7 +3,7 @@
   "kind": "ReplicationController",
   "apiVersion": "v1beta1",
   "desiredState": {
-    "replicas": 4,
+    "replicas": 3,
     "replicaSelector": {"name": "env"},
     "podTemplate": {
       "desiredState": {
