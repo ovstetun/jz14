@@ -39,7 +39,15 @@ abstract class IngredientPlan(val ingredientModule: IngredientSlickModule) exten
             ElasticIntegration.save(ingredient)
             
             Right(ingredient copy (id = Some(id)))
+          } |
+          json (DELETE) { () =>
+            val u = ingredientModule.ingredients.byId(id)
+
+            u delete
+
+            Left(NoContent)
           }
+
       }
     }
   }

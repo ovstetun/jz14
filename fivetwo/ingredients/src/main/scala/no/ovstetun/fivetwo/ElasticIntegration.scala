@@ -14,4 +14,9 @@ object ElasticIntegration {
       index into "ingredients/ingredient" id ingredient.id.get doc ObjectSource(ingredient)
     }
   }
+  def remove(ingredientId: Int) = {
+    client execute {
+      delete id ingredientId from "ingredients/ingredient"
+    }
+  }
 }
