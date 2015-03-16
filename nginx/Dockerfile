@@ -1,6 +1,6 @@
 FROM nginx
 
-ADD html/bin /usr/local/nginx/html
+ADD html/bin /usr/share/nginx/html
 
 ADD nginx.conf /etc/nginx.conf
 ADD start-nginx.sh /usr/local/bin/start-nginx.sh

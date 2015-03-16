@@ -1,12 +1,12 @@
 mysql:
-  image: ovstetun/fivetwodb:2
+  image: ovstetun/fivetwodb:3
   environment:
     MYSQL_ROOT_PASSWORD: mysecretpassword
   ports:
     - "3306:3306"
 
 elastic:
-  image: ovstetun/fivetwoelastic:2
+  image: ovstetun/fivetwoelastic:3
   ports:
     - "9200:9200"
     - "9300:9300"
